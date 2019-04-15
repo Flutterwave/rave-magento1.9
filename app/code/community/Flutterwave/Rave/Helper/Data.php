@@ -37,7 +37,6 @@ class Flutterwave_Rave_Helper_Data extends Mage_Core_Helper_Abstract
         } else {
             return Mage::getStoreConfig(Flutterwave_Rave_Helper_Data::XML_PATH_LIVE_SECRET_KEY);
         }
-
     }
 
     public function getPublicKey()
@@ -47,7 +46,6 @@ class Flutterwave_Rave_Helper_Data extends Mage_Core_Helper_Abstract
         } else {
             return Mage::getStoreConfig(Flutterwave_Rave_Helper_Data::XML_PATH_LIVE_PUBLIC_KEY);
         }
-
     }
 
     public function getOrderID()
@@ -62,12 +60,12 @@ class Flutterwave_Rave_Helper_Data extends Mage_Core_Helper_Abstract
         for ($i = 0; $i < 50; ++$i) {
             $charid .= '0123456789abcdef'[rand(0, $max)];
         }
-        $hyphen = chr(45);// "-"
+        $hyphen = chr(45); // "-"
         $reference = $orderId . $hyphen
             . substr($charid, 8, 4) . $hyphen
             . '5' . substr($charid, 11, 4) . $hyphen
             . substr($charid, 16, 4) . $hyphen
-            . substr($charid, 20, 12);// "}"
+            . substr($charid, 20, 12); // "}"
         return $reference;
     }
 
@@ -85,7 +83,7 @@ class Flutterwave_Rave_Helper_Data extends Mage_Core_Helper_Abstract
             'txref' => $txref,
             'SECKEY' => $this->getSecretKey(),
             'last_attempt' => '1'
-        // 'only_successful' => '1'
+            // 'only_successful' => '1'
         );
 
         $apiLink = "https://api.ravepay.co/";
@@ -198,13 +196,13 @@ class Flutterwave_Rave_Helper_Data extends Mage_Core_Helper_Abstract
         $order = new Mage_Sales_Model_Order();
         $orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
 
-            // return blank params if no order is found
+        // return blank params if no order is found
         if (!$orderId) {
             return array();
         }
         $order->loadByIncrementId($orderId);
 
-            // get an email for this transaction
+        // get an email for this transaction
         $billing = $order->getBillingAddress();
         if ($order->getBillingAddress()->getEmail()) {
             $email = $order->getBillingAddress()->getEmail();
@@ -221,6 +219,9 @@ class Flutterwave_Rave_Helper_Data extends Mage_Core_Helper_Abstract
                 break;
             case 'ZAR':
                 $country = 'ZA';
+                break;
+            case 'TZS':
+                $country = 'TZ';
                 break;
             default:
                 $country = 'NG';
