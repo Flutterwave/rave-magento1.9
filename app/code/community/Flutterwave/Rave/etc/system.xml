@@ -85,7 +85,7 @@
             </live_public_key>
             <test_secret_key translate="label,comment">
                 <label>Test Secret Key</label>
-                <comment>Check your <![CDATA[<a href="https://raveappv2.herokuapp.com/dashboard/settings/apis" target="_blank">Test Rave API Keys</a>]]> for yours.</comment>
+                <comment>Check your <![CDATA[<a href="https://rave.flutterwave.com/dashboard/settings/apis" target="_blank">Test Rave API Keys</a>]]> for yours.</comment>
                 <frontend_type>text</frontend_type>
                 <show_in_default>1</show_in_default>
                 <show_in_website>1</show_in_website>
@@ -94,7 +94,7 @@
             </test_secret_key>
             <test_public_key translate="label,comment">
                 <label>Test Public Key</label>
-                <comment>Check your <![CDATA[<a href="https://raveappv2.herokuapp.com/dashboard/settings/apis" target="_blank">Test Rave API Keys</a>]]> for yours.</comment>
+                <comment>Check your <![CDATA[<a href="https://rave.flutterwave.com/dashboard/settings/apis" target="_blank">Test Rave API Keys</a>]]> for yours.</comment>
                 <frontend_type>text</frontend_type>
                 <show_in_default>1</show_in_default>
                 <show_in_website>1</show_in_website>

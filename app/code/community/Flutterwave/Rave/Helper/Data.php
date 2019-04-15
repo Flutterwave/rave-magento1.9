@@ -88,12 +88,7 @@ class Flutterwave_Rave_Helper_Data extends Mage_Core_Helper_Abstract
         // 'only_successful' => '1'
         );
 
-        
-        if (Mage::getStoreConfig(Flutterwave_Rave_Helper_Data::XML_PATH_TEST_MODE)) {
-            $apiLink = "http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/";
-        } else {
-            $apiLink = "https://api.ravepay.co/";
-        }
+        $apiLink = "https://api.ravepay.co/";
 
         // make request to endpoint.
         $data_string = json_encode($data);
@@ -141,8 +136,8 @@ class Flutterwave_Rave_Helper_Data extends Mage_Core_Helper_Abstract
 
     function initializeTransaction()
     {
-        $stagingUrl = 'https://rave-api-v2.herokuapp.com';
-        $liveUrl = 'https://api.ravepay.co';
+        $baseUrl = 'https://api.ravepay.co';
+
         $postfields = Mage::helper('flutterwave_rave')->getFormParams();
 
         if (!$postfields) {
@@ -158,11 +153,6 @@ class Flutterwave_Rave_Helper_Data extends Mage_Core_Helper_Abstract
         $hashedValue = hash('sha256', $stringToHash);
         $env = "staging";
 
-        if (Mage::getStoreConfig(Flutterwave_Rave_Helper_Data::XML_PATH_TEST_MODE)) {
-            $baseUrl = $stagingUrl;
-        } else {
-            $baseUrl = $liveUrl;
-        }
         $transactionData = array_merge($postfields, array('integrity_hash' => $hashedValue));
         $json = json_encode($transactionData);
         $datas = "";
